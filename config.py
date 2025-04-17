@@ -48,6 +48,13 @@ AUTO_DELETE_TIME = int(environ.get("AUTO_DELETE_TIME", "1800")) # Time in Second
 # Channel Information
 LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "-1002338165303"))
 
+#force sub channel id, if you want enable force sub
+FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002111679640"))
+JOIN_REQUEST_ENABLE = os.environ.get("JOIN_REQUEST_ENABLED", None)
+
+#Force sub message 
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {first}\n\n<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>")
+
 # File Caption Information
 CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", f"{script.CAPTION}")
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
