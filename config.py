@@ -70,18 +70,34 @@ WEBSITE_URL_MODE = bool(environ.get('WEBSITE_URL_MODE', True)) # Set True or Fal
 WEBSITE_URL = environ.get("WEBSITE_URL", "https://mrnfilesharing.blogspot.com/2025/01/redirecting-to-your-link-code-credit.html") # For More Information Check Video On Yt - @Tech_VJ
 
 # File Stream Config
-STREAM_MODE = bool(environ.get('STREAM_MODE', True)) # Set True or False
+STREAM_MODE = bool(environ.get('STREAM_MODE', True))
 
-# If Stream Mode Is True Then Fill All Required Variable, If False Then Don't Fill.
-MULTI_CLIENT = False
+NO_PORT = bool(environ.get('NO_PORT', False))
+APP_NAME = None
+if 'DYNO' in environ:
+    ON_HEROKU = True
+    APP_NAME = environ.get('APP_NAME')
+else:
+    ON_HEROKU = False
+BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
+FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
+URL = "https://contemporary-callie-mrnmz-c1182bbc.koyeb.app/".format(FQDN) if ON_HEROKU or NO_PORT else "https://contemporary-callie-mrnmz-c1182bbc.koyeb.app/".format(FQDN, PORT)
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
+WORKERS = int(environ.get('WORKERS', '4'))
+SESSION_NAME = str(environ.get('SESSION_NAME', 'MRN_RIPPER'))
+MULTI_CLIENT = False
+name = str(environ.get('name', 'MRN_RIPPER'))
 PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
 if 'DYNO' in environ:
     ON_HEROKU = True
+    APP_NAME = str(getenv('APP_NAME'))
 else:
     ON_HEROKU = False
-URL = environ.get("URL", "https://contemporary-callie-mrnmz-c1182bbc.koyeb.app/")
-
+HAS_SSL = bool(getenv('HAS_SSL', True))
+if HAS_SSL:
+    URL = "https://contemporary-callie-mrnmz-c1182bbc.koyeb.app/".format(FQDN)
+else:
+    URL = "https://contemporary-callie-mrnmz-c1182bbc.koyeb.app/".format(FQDN)
 
 # Don't Remove Credit Tg - @VJ_Botz
 # Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
