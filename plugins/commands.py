@@ -60,10 +60,10 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton('⚜️ sᴜʙsᴄʀɪʙᴇ ᴍʏ ᴛᴇʟᴇɢʀᴀᴍ ᴄʜᴀɴɴᴇʟ', url='https://t.me/+dt5i84djlh4wNGM1')
+            InlineKeyboardButton('⚜️ sᴜʙsᴄʀɪʙᴇ ᴍʏ ᴛᴇʟᴇɢʀᴀᴍ ᴄʜᴀɴɴᴇʟ', url='https://t.me/MRN_RIPPER')
             ],[
             InlineKeyboardButton('👨‍💻 ᴄᴏɴᴛᴀᴄᴛ ᴜs', url='https://t.me/MRN_CONTACT_BOT'),
-            InlineKeyboardButton('💝 ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜ ɢʀᴏᴜᴘ', url='https://t.me/MRN_Movies_Search_Group')
+            InlineKeyboardButton('💝 ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜ ɢʀᴏᴜᴘ', url='https://t.me/Movies_Tv_Serial_Request')
             ],[
             InlineKeyboardButton('💁‍♀️ ʜᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('😊 ᴀʙᴏᴜᴛ', callback_data='about')
@@ -174,9 +174,9 @@ async def start(client, message):
                             InlineKeyboardButton("• ᴅᴏᴡɴʟᴏᴀᴅ •", url=download),
                             InlineKeyboardButton('• ᴡᴀᴛᴄʜ •', url=stream)
                         ],[
-                            InlineKeyboardButton('🌿 𝙹𝙾𝙸𝙽 𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 🌿', url='https://t.me/+dt5i84djlh4wNGM1'),
+                            InlineKeyboardButton('🌿 𝙹𝙾𝙸𝙽 𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 🌿', url='https://t.me/MRN_RIPPER'),
                         ],[
-                            InlineKeyboardButton('💝 𝙼𝙾𝚅𝙸𝙴 𝚂𝙴𝙰𝚁𝙲𝙷 𝙶𝚁𝙾𝚄𝙿 🔍', url='https://t.me/MRN_Movies_Search_Group'),
+                            InlineKeyboardButton('💝 𝙼𝙾𝚅𝙸𝙴 𝚂𝙴𝙰𝚁𝙲𝙷 𝙶𝚁𝙾𝚄𝙿 🔍', url='https://t.me/Movies_Tv_Serial_Request'),
                         ]]
                         reply_markup=InlineKeyboardMarkup(button)
                 else:
@@ -343,10 +343,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('⚜️ sᴜʙsᴄʀɪʙᴇ ᴍʏ ᴛᴇʟᴇɢʀᴀᴍ ᴄʜᴀɴɴᴇʟ', url='https://t.me/+dt5i84djlh4wNGM1')
+            InlineKeyboardButton('⚜️ sᴜʙsᴄʀɪʙᴇ ᴍʏ ᴛᴇʟᴇɢʀᴀᴍ ᴄʜᴀɴɴᴇʟ', url='https://t.me/MRN_RIPPER')
         ],[
             InlineKeyboardButton('👨‍💻 ᴄᴏɴᴛᴀᴄᴛ ᴜs', url='https://t.me/MRN_CONTACT_BOT'),
-            InlineKeyboardButton('💝 ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜ ɢʀᴏᴜᴘ', url='https://t.me/MRN_Movies_Search_Group')
+            InlineKeyboardButton('💝 ᴍᴏᴠɪᴇ sᴇᴀʀᴄʜ ɢʀᴏᴜᴘ', url='https://t.me/Movies_Tv_Serial_Request')
         ],[
             InlineKeyboardButton('💁‍♀️ ʜᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('😊 ᴀʙᴏᴜᴛ', callback_data='about')
