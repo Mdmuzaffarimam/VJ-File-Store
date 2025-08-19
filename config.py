@@ -1,88 +1,25 @@
-# Don't Remove Credit Tg - @VJ_Botz
-# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
-# Ask Doubt on telegram @KingVJ01
 
-
-import re
 import os
-from os import environ
-from Script import script
 
-id_pattern = re.compile(r'^.\d+$')
-def is_enabled(value, default):
-    if value.lower() in ["true", "yes", "1", "enable", "y"]:
-        return True
-    elif value.lower() in ["false", "no", "0", "disable", "n"]:
-        return False
-    else:
-        return default
-      
-# Bot Information
-API_ID = int(environ.get("API_ID", "23631217"))
-API_HASH = environ.get("API_HASH", "567c6df308dc6901790309499f729d12")
-BOT_TOKEN = environ.get("BOT_TOKEN", "")
+# --- Telegram credentials ---
+API_ID = int(os.getenv("API_ID", "123456"))           # Get from my.telegram.org
+API_HASH = os.getenv("API_HASH", "your_api_hash")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "your_bot_token")
 
-PICS = (environ.get('PICS', 'https://files.catbox.moe/ckoi9u.jpg https://i.postimg.cc/8C15CQ5y/1.png https://i.postimg.cc/gcNtrv0m/2.png https://i.postimg.cc/cHD71BBz/3.png https://i.postimg.cc/F1XYhY8q/4.png https://i.postimg.cc/1tNwGVxC/5.png https://i.postimg.cc/dtW30QpL/6.png https://i.postimg.cc/139dvs3c/7.png https://i.postimg.cc/QtXVtB8K/8.png https://i.postimg.cc/y8j8G1XV/9.png https://i.postimg.cc/zDF6KyJX/10.png https://i.postimg.cc/fyycVqzd/11.png https://i.postimg.cc/26ZBtBZr/13.png https://i.postimg.cc/PJn8nrWZ/14.png https://i.postimg.cc/cC7txyhz/15.png https://i.postimg.cc/kX9tjGXP/16.png https://i.postimg.cc/zXjH4NVb/17.png https://i.postimg.cc/sggGrLhn/18.png https://i.postimg.cc/y8pgYTh7/19.png')).split() # Bot Start Picture
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6139759254').split()]
-BOT_USERNAME = environ.get("BOT_USERNAME", "MZStorFXrobot") # without @
-PORT = environ.get("PORT", "8080")
+# --- Force Subscribe configuration ---
+# 1) Public usernames you can verify directly (e.g., "Mrn_Officialx")
+FORCE_SUB_USERNAMES = [u.strip().lstrip("@") for u in os.getenv("FORCE_SUB_USERNAMES", "Mrn_Officialx").split(",") if u.strip()]
 
-# Clone Info :-
-CLONE_MODE = bool(environ.get('CLONE_MODE', False)) # Set True or False
+# 2) Private / invite-only channels -> use numeric chat IDs like -1001234567890
+#    Tip: add the bot to your channel OR simply forward a message from that channel to the bot as admin,
+#    then use /id to read the chat.id
+FORCE_SUB_CHAT_IDS = [int(x.strip()) for x in os.getenv("FORCE_SUB_CHAT_IDS", "").split(",") if x.strip()]
 
-# If Clone Mode Is True Then Fill All Required Variable, If False Then Don't Fill.
-CLONE_DB_URI = environ.get("CLONE_DB_URI", "mongodb+srv://mrnoffice692:PsO4VGHI9heKd7WA@cluster0.o1vcj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-CDB_NAME = environ.get("CDB_NAME", "mrnoffice692")
+# 3) Button links to show users (invite links or public links).
+#    These links are just for the "Join" buttons UI. Membership check is only possible for USERNAMES/CHAT_IDS.
+#    Put all links here (including the two invite links you shared).
+FORCE_SUB_LINKS = [x.strip() for x in os.getenv("FORCE_SUB_LINKS",
+    "https://t.me/+PArBpI-yLp5hMjQ1,https://t.me/+u6qe756hjylkNmE1,https://t.me/Mrn_Officialx").split(",") if x.strip()]
 
-# Database Information
-DB_URI = environ.get("DB_URI", "mongodb+srv://mrnoffice692:PsO4VGHI9heKd7WA@cluster0.o1vcj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DB_NAME = environ.get("DB_NAME", "mrnoffice692")
-
-# Auto Delete Information
-AUTO_DELETE_MODE = bool(environ.get('AUTO_DELETE_MODE', True)) # Set True or False
-
-# If Auto Delete Mode Is True Then Fill All Required Variable, If False Then Don't Fill.
-AUTO_DELETE = int(environ.get("AUTO_DELETE", "30")) # Time in Minutes
-AUTO_DELETE_TIME = int(environ.get("AUTO_DELETE_TIME", "1800")) # Time in Seconds
-
-# Channel Information
-LOG_CHANNEL = int(environ.get("LOG_CHANNEL", "-1002338165303"))
-
-# File Caption Information
-CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", f"{script.CAPTION}")
-BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
-
-# Enable - True or Disable - False
-PUBLIC_FILE_STORE = is_enabled((environ.get('MZAUTOFILTER', "True")), True)
-
-# Verify Info :-
-VERIFY_MODE = bool(environ.get('VERIFY_MODE', False)) # Set True or False
-
-# If Verify Mode Is True Then Fill All Required Variable, If False Then Don't Fill.
-SHORTLINK_URL = environ.get("SHORTLINK_URL", "linkshortify.com") # shortlink domain without https://
-SHORTLINK_API = environ.get("SHORTLINK_API", "933f3923527586776d9c6c6c6eebd1a30563bee6") # shortlink api
-VERIFY_TUTORIAL = environ.get("VERIFY_TUTORIAL", "https://t.me/MRN_Tutorial/1806") # how to open link 
-
-# Website Info:
-WEBSITE_URL_MODE = bool(environ.get('WEBSITE_URL_MODE', True)) # Set True or False
-
-# If Website Url Mode Is True Then Fill All Required Variable, If False Then Don't Fill.
-WEBSITE_URL = environ.get("WEBSITE_URL", "https://mrnfilesharing.blogspot.com/2025/01/redirecting-to-your-link-code-credit.html") # For More Information Check Video On Yt - @Tech_VJ
-
-# File Stream Config
-STREAM_MODE = bool(environ.get('STREAM_MODE', True)) # Set True or False
-
-# If Stream Mode Is True Then Fill All Required Variable, If False Then Don't Fill.
-MULTI_CLIENT = False
-SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
-PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
-if 'DYNO' in environ:
-    ON_HEROKU = True
-else:
-    ON_HEROKU = False
-URL = environ.get("URL", "https://mimam-officialx-bot-c1182bbc.koyeb.app/")
-
-# Don't Remove Credit Tg - @VJ_Botz
-# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
-# Ask Doubt on telegram @KingVJ01
-    
+# Optional: list of admin user IDs who can use /id etc.
+ADMINS = [int(x.strip()) for x in os.getenv("ADMINS", "").split(",") if x.strip()]

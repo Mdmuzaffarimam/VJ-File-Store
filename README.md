@@ -1,115 +1,75 @@
-<p align="center">
-  <img src="https://graph.org/file/d57d6f83abb6b8d0efb02.jpg" alt="VJ-FILE-STORE-BOT Logo">
-</p>
-<h1 align="center">
-  VJ FILE STORE BOT
-</h1>
 
-![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=Welcome+To+VJ-FILE-STORE-BOT;A+Highly+Advance+File+Store+Bot;Made+By+Yt-@Tech_VJ!;With+Clone+Feature+Stream/Download+Link;Custom+Url+Shortner+Auto+Delete+Feature;A+Bot+With+Fully+Advanced+Feature!;Thank+You!)
-</p>
+# VJ File Store — Multi Force Subscribe (Deploy Ready)
 
-### Deploy Tutorial [Video Link](https://youtu.be/VxAn9VcYtQg)
+This package adds **Multi Force Subscribe** to your bot. Users must join all required channels before using the bot.
+
+> ⚠️ Telegram bots cannot verify private invite links directly. To *enforce* membership for private channels, you must provide their **numeric chat IDs** (like `-1001234567890`). Use `/id` helper below.
+
+---
 
 ## Features
+- Multi-channel Force Subscribe
+- Hindi + English lock message
+- Join buttons for each channel (invite links or public links)
+- "✅ Try Again" callback
+- Render / Railway deploy-ready
 
-<b><details><summary>Tap On Me For Bot Features</summary>
- 
-- [x] Permanent Link By Using Website [ Premium Feature] 
-- [x] Clone Feature Added [ Premium Feature] 
-- [x] Token Verification Feature 
-- [x] Stram Feature Added With Many Player Support
-- [x] Custom Url Shortner Support Any User Can Add His Own Shortner
-- [x] Batch Support Added, Any User Can Use Batch By Making Bot Admin In His File Store Channel
-- [x] Auto Delete Feature Added
-- [x] Custom Start Message With Picture And Buttons
-</b>
-</details>
+---
 
-## Environment Variables
+## Quick Start (Local)
+1. Create a bot and get `BOT_TOKEN` from @BotFather.
+2. Get `API_ID` and `API_HASH` from https://my.telegram.org/apps
+3. Install deps:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Export env vars (example):
+   ```bash
+   export API_ID=123456
+   export API_HASH=xxxxxx
+   export BOT_TOKEN=1234:abcd
+   export FORCE_SUB_USERNAMES="Mrn_Officialx"
+   export FORCE_SUB_CHAT_IDS="-1001234567890,-1002222222222"   # for private channels (optional)
+   export FORCE_SUB_LINKS="https://t.me/+PArBpI-yLp5hMjQ1,https://t.me/+u6qe756hjylkNmE1,https://t.me/Mrn_Officialx"
+   ```
+5. Run:
+   ```bash
+   python app.py
+   ```
 
-<b><details><summary>Tap On Me For Environment Variable</summary>
+---
 
-- `API_ID` : Get From [my.telegram.org](https://my.telegram.org)
-- `API_HASH` : Get From [my.telegram.org](https://my.telegram.org)
-- `BOT_TOKEN` : Get From [BotFather](https://telegram.me/BotFather)
-- `BOT_USERNAME` : Your Bot Username Without @
-- `DB_URI` : Mongodb Database Url For Main Bot [Tutorial Watch Here](https://youtu.be/DAHRmFdw99o)
-- `CLONE_DB_URI` : Mongodb Database Url For Clone Bot [Tutorial Watch Here](https://youtu.be/DAHRmFdw99o)
-- `ADMINS` : It mean Admin/Owner Id For Broadcasting Message.
-- `LOG_CHANNEL` : Log channel id start with -100xxxxxx
-- `URL` : Your Server App Link With https:// and in last make sure one / is given.
-- `AUTO_DELETE` : Time In Minutes
-- `AUTO_DELETE_TIME` : Time In Seconds
-- `PYTHON_VERSION` : This Variable Is Only For Render, Value IS `3.10.8`
-- `PORT` : This Variable Is Only For Render, Value IS `8080`
-</b>
-</details>
+## Getting Chat IDs for Private Channels
+- Add the bot to your channel (no posting rights needed) **or**
+- Forward any message from that channel to the bot (as an admin), then send `/id` replying to that forwarded message.
+- The bot will show: `title` and `id`. Put that `id` in `FORCE_SUB_CHAT_IDS`.
 
-## See How Bot Look Like
+> If you do not provide chat IDs, the bot will **show join buttons** for invite links but **cannot verify membership** for those links.
 
-<b><details><summary>Tap On Me For Demo Bot</summary></b>
+---
 
-<img src="https://graph.org/file/bb9c59043c52072e8dc93.jpg" alt="Bot Demo">
-<img src="https://graph.org/file/295e41dfab93acf42a111.jpg" alt="Bot Demo">
-<img src="https://graph.org/file/ccc1b6ab4967a7d155ab8.jpg" alt="Bot Demo">
-<img src="https://graph.org/file/75db5257c39436b734b49.jpg" alt="Bot Demo">
-<img src="https://graph.org/file/1ce62a17012ed5723aaca.jpg" alt="Bot Demo">
-</details>
+## Deploy to Render
+- Create a new **Worker** service.
+- Point to this repo/ZIP; Render will read `render.yaml`.
+- Set the following Environment Variables on Render dashboard:
+  - `API_ID`, `API_HASH`, `BOT_TOKEN`
+  - `FORCE_SUB_USERNAMES` (comma-separated, e.g. `Mrn_Officialx`)
+  - `FORCE_SUB_CHAT_IDS` (comma-separated numeric IDs for private channels, optional but recommended)
+  - `FORCE_SUB_LINKS` (all your join/invite links; used for buttons)
 
-## Command To Use Bot
+## Deploy to Railway
+- Create a new project from this ZIP/repo.
+- Add variables in Project Settings → Variables:
+  - `API_ID`, `API_HASH`, `BOT_TOKEN`
+  - `FORCE_SUB_USERNAMES`
+  - `FORCE_SUB_CHAT_IDS`
+  - `FORCE_SUB_LINKS`
+- Railway uses `Procfile` → `worker: python app.py`
 
-<b><details><summary>Tap On Me For Bot Commands</summary>
+---
 
-🖍️ Main Bot Commands :-
+## Notes
+- Replace the placeholder media handler in `app.py` with your actual file-store logic.
+- You can keep your own repository structure and just copy `force_subscribe.py` and the checking logic into your handlers.
 
-- `/start` : By This Command You Can Check Bot Is Alive Or Not
-- `/link` : By This Command You Can Generate A Shareable Link Of File By Replying This Command To That File
-- `/batch` : By This Command You Can Generate Multiple File Shareable Link At A Time [Use Like This /batch (first post link) (last post link)]
-- `/base_site` : By This Command You Can Set Your Url Shortner Domain [Use Like This /base_site domain.com]
-- `/api` : By This Command You Can Set Your Url Shortner Api [Use Like This /api (your api key)]
-- `/deletecloned` : By This Command You Can Delete Your Cloned Bot [Use Like This /deletecloned (your bot token)]
-- `/broadcast` : By Using This Command You Can Broadcast A Message To Your Bot User, Reply This Command To Broadcast Message [Owner Only Command]
-
-🖍️ Clone Bot Commands :- 
-
-- `/start` : By This Command You Can Check Bot Is Alive Or Not
-- `/link` : By This Command You Can Generate A Shareable Link Of File By Replying This Command To That File
-- `/base_site` : By This Command You Can Set Your Url Shortner Domain [Use Like This /base_site domain.com]
-- `/api` : By This Command You Can Set Your Url Shortner Api [Use Like This /api (your api key)]
-- `/broadcast` : By Using This Command You Can Broadcast A Message To Your Bot User, Reply This Command To Broadcast Message [Clone Bot Owner Only Command]
-
-</b>
-</details>
-
-## Credit
-
-<b><details><summary>Tap On Me For See Credit</summary>
-
-💝 Credit Goes To [Tech VJ](https://telegram.me/Kingvj01)
-
-🖍️ This Code Is Fully Written Or Coded And Public By [Tech VJ](https://telegram.me/Kingvj01) So Don't Forgot To Give Credit
-
-💖 And Thank You So Much To All Who Help In This Journey 💕
-
-Copyright ©️ [Tech VJ](https://telegram.me/Kingvj01)
-
-</b>
-</details>
-
-## About Owner 
-
-<b><details><summary>Tap On Me For See Details Of Owner</summary>
-
-- YouTube Channel : [Tech VJ](https://youtube.com/@Tech_VJ)
-- Telegram Channel : [VJ Botz](https://telegram.me/VJ_Botz)
-- Contact Link : [King VJ](https://telegram.me/Kingvj01)
-- Instagram Id Link : [Tech VJ](https://instagram.com/tech.vj)
-
-</b>
-</details>
-
-
-### Copyright ©️ [Tech VJ](https://telegram.me/Kingvj01)
-
-<b>Selling This Repo Or Code Of This Repo For Money Is Strictly Prohibited 🚫</b>
-
+Happy shipping! 🚀

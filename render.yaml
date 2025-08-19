@@ -1,0 +1,23 @@
+
+services:
+  - type: worker
+    name: vj-file-store-bot
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    envVars:
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: FORCE_SUB_USERNAMES
+        value: "Mrn_Officialx"
+      - key: FORCE_SUB_CHAT_IDS
+        value: ""
+      - key: FORCE_SUB_LINKS
+        value: "https://t.me/+PArBpI-yLp5hMjQ1,https://t.me/+u6qe756hjylkNmE1,https://t.me/Mrn_Officialx"
+      - key: ADMINS
+        value: ""
